@@ -1,0 +1,5 @@
+RewriteEngine On
+ReWriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ profile.php?username=$1 [QSA]
+ReWriteRule ^settings/account/?$ account.php
+ReWriteRule ^settings/password/?$ password.php
