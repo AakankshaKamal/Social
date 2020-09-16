@@ -1,12 +1,15 @@
 $(function(){
 	var regex=/[#|@](\w+)$/ig;
 	$(document).on('keyup','.status',function(){
-		var content =$.trim($(this).val());
-		var text= content.match(regex);
 		var max=140;
+		var content =$.trim($(this).val());
+			$('#count').text(max - content.length);
+		var text= content.match(regex);
+		
 		if(text !=null)
 		{
 			var dataString='hashtag='+text;
+
 
 			$.ajax({
 				type:"POST",
@@ -23,10 +26,26 @@ $(function(){
  $('.hash-box li').hide();
  $('.status').focus();
 
+
+
 					});
 					
 				}
 			});
+			 
+		}//not working length part
+		else
+		{
+			$('.hash-box li').hide();
+		}
+		if(content.length === max)
+		{
+			$('#count').css('color','#DD2');
+
+		}
+		else
+		{
+			$('#count').css('color','#2D4');
 		}
 
 	});
